@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFoodTable extends Migration
+class CreateScheduledFeedingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateFoodTable extends Migration
      */
     public function up()
     {
-        Schema::create('food', function (Blueprint $table) {
+        Schema::create('scheduled_feeding', function (Blueprint $table) {
             $table->id();
-	    $table->string('name');
-	    $table->string('description');
+            $table->unsignedBigInteger('template');
+            $table->string('frequency');
+	    $table->foreign('template')->references('id')->on('feeding');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateFoodTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('food');
+        Schema::dropIfExists('scheduled_feeding');
     }
 }

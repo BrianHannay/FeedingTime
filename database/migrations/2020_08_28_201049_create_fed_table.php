@@ -15,7 +15,12 @@ class CreateFedTable extends Migration
     {
         Schema::create('fed', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+	    $table->unsignedBigInteger('food');
+	    $table->unsignedBigInteger('feeding');
+	    $table->unsignedInteger('ducks');
+	    $table->unsignedInteger('count');
+	    $table->foreign('food')->references('id')->on('food');
+	    $table->foreign('feeding')->references('id')->on('feeding');
         });
     }
 

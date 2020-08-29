@@ -15,7 +15,12 @@ class CreateFeedingTable extends Migration
     {
         Schema::create('feeding', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+	    $table->unsignedBigInteger('user');
+	    $table->unsignedBigInteger('location');
+	    $table->date('occurred');
+	    $table->timestamps();
+	    $table->foreign('user')->references('id')->on('users');
+	    $table->foreign('location')->references('id')->on('location');
         });
     }
 
