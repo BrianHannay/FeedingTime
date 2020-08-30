@@ -19,6 +19,6 @@ class Feeding extends Model
 	    return $this->hasMany('App\Fed');
     }
     public function food() {
-	    public $this->hasManyThrough('App\Food', 'App\Fed');
+	    return $this->hasManyThrough('App\Food', 'App\Fed');
     }
 }

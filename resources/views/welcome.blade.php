@@ -6,5 +6,5 @@
                 </div>
 @endsection()
 @section('content')
-@include('subviews.maps')
+<map></map>
 @endsection()

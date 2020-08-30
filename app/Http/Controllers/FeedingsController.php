@@ -8,6 +8,6 @@ class FeedingsController extends Controller
 {
     //
 	public function post() {
-		return view('post-feeding');
+		\App\Feeding::create();
 	}
 }

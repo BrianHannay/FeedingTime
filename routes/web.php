@@ -19,5 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/post', 'FeedingsController@post')->name('post');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/post', 'FeedingController@post')->name('post')->middleware('auth');
+Route::get('/searchLocation/{search}', 'LocationController@search')->name('searchLocations')->middleware('auth');
+Route::get('/addLocation/{search}', 'LocationController@create')->name('createLocation')->middleware('auth');
+Route::get('/searchFoods/{search}', 'FoodController@search')->name('searchFoods')->middleware('auth');
